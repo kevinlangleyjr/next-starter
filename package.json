@@ -1,5 +1,6 @@
 {
   "name": "next-starter-template",
+  "license": "MIT",
   "author": {
     "name": "Kevin Langley Jr.",
     "email": "me@kevinlangleyjr.com",
@@ -13,9 +14,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "type-check": "tsc --pretty --noEmit",
-    "test": "yarn test:unit-ci && yarn test:e2e",
+    "test": "yarn test:unit:ci && yarn test:e2e",
     "test:unit": "jest --watch",
-    "test:unit-ci": "jest --ci",
+    "test:unit:ci": "jest --ci",
     "test:e2e": "playwright test",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -s public/",
@@ -23,8 +24,8 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "yarn lint:fix",
-      "yarn test"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "dependencies": {
