@@ -1,6 +1,10 @@
 {
   "name": "next-starter-template",
-  "private": true,
+  "author": {
+    "name": "Kevin Langley Jr.",
+    "email": "me@kevinlangleyjr.com",
+    "url": "https://kevinlangleyjr.dev"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +13,18 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,ts,tsx}\"",
     "type-check": "tsc --pretty --noEmit",
-    "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test": "yarn test:unit-ci && yarn test:e2e",
+    "test:unit": "jest --watch",
+    "test:unit-ci": "jest --ci",
+    "test:e2e": "playwright test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -s public/",
+    "serve-storybook": "serve storybook-static"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "yarn lint:fix",
-      "yarn test:ci"
+      "yarn test"
     ]
   },
   "dependencies": {
@@ -24,6 +33,10 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.17.1",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-links": "^6.4.9",
+    "@storybook/react": "^6.4.9",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -31,6 +44,7 @@
     "@types/react": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
+    "concurrently": "^6.5.1",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7",
     "eslint-config-prettier": "^8.3.0",
@@ -38,6 +52,7 @@
     "jest": "^27.4.5",
     "lint-staged": "^12.1.4",
     "prettier": "^2.5.1",
+    "serve": "^13.0.2",
     "typescript": "4.5.4"
   }
 }
